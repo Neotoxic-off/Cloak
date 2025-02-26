@@ -27,7 +27,7 @@ void Logger::Log(const char* logType, const char* message) {
 
     std::strftime(timeStr, sizeof(timeStr), "%X", &local_time);
 
-    std::cout << std::format("{} | {} {}", timeStr, logType, message) << std::endl;
+    std::cout << std::format("{} | [{}] {}", timeStr, logType, message) << std::endl;
 }
 
 void Logger::Unload() {
