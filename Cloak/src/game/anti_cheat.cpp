@@ -8,23 +8,12 @@ AntiCheat::AntiCheat()
 
 void DullStart()
 {
-	std::cout << "[Anti-Cheat] start bypassed" << std::endl;
-}
-
-void NullDetection()
-{
-	std::cout << "[Anti-Cheat] detection bypassed" << std::endl;
-	return;
+	MessageBoxA(NULL, "Anti-Cheat start Bypassed", "Anti-Cheat", MB_OK);
 }
 
 void AntiCheat::NoStart()
 {
-	MH_CreateHook((LPVOID*)(this->Assemly + 0x3817030), &DullStart, NULL);
-}
-
-void AntiCheat::NoDetection()
-{
-	MH_CreateHook((LPVOID*)(this->Assemly + 0x3817140), &NullDetection, NULL);
+	MH_CreateHook((LPVOID*)(this->Assemly + 0x3818830), &DullStart, NULL);
 }
 
 AntiCheat::~AntiCheat()

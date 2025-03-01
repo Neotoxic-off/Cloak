@@ -17,5 +17,5 @@ class AntiCheat
 		~AntiCheat();
 
 		void NoStart();
-		void NoDetection();
+		void Stop();
 };

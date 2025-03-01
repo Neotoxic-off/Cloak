@@ -16,7 +16,6 @@ void Core::BypassAntiCheat()
 	this->logger.Log(LOG_WAIT, "Bypassing anti-cheat");
 
 	this->antiCheat.NoStart();
-	this->antiCheat.NoDetection();
 
 	this->logger.Log(LOG_SUCCESS, "Bypassed anti-cheat");
 }
