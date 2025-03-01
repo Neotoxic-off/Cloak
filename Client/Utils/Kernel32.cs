@@ -64,5 +64,12 @@ namespace Client.Utils
 
         [DllImport("kernel32.dll")]
         public static extern uint WaitForSingleObject(IntPtr hHandle, int dwMilliseconds);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern bool IsWow64Process(IntPtr hProcess, out bool Wow64Process);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern bool GetExitCodeThread(IntPtr hThread, out uint lpExitCode);
+
     }
 }

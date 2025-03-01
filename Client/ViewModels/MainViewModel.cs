@@ -61,5 +61,11 @@ namespace Client.ViewModels
 
             _injectionService.EjectDll(process, Utils.Constants.DLL);
         }
+
+        [RelayCommand]
+        private void SaveLogs()
+        {
+            LogService?.Save();
+        }
     }
 }

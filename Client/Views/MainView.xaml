@@ -22,8 +22,26 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
+        <Grid Grid.Row="1">
+            <ItemsControl ItemsSource="{Binding LogService.Logs, Mode=OneWay}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Path Grid.Column="0" Width="10" Height="10" Data="{StaticResource LogsIcon}" Fill="White" Stretch="UniformToFill"/>
+                            <TextBlock Grid.Column="1" Text="{Binding}" Foreground="White" VerticalAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+
         <StackPanel Grid.Row="2">
-            <Button Command="{Binding SocialDiscordCommand}" Content="Discord"/>
+            <Button Command="{Binding SaveLogsCommand}" Content="Save logs"/>
         </StackPanel> 
 
         <Grid Grid.Row="3">

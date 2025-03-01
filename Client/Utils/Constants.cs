@@ -21,10 +21,15 @@ namespace Client.Utils
         public const uint MEM_RESERVE = 0x00002000;
         public const uint MEM_RELEASE = 0x00008000;
 
+        public const uint TOKEN_QUERY = 0x0008;
+        public const uint WAIT_OBJECT_0 = 0x00000000;
+        public const uint WAIT_TIMEOUT = 0x00000102;
+
         public static uint PAGE_READWRITE = 4;
 
         public static string DLL = "Cloak.dll";
         public static string PROCESS_NAME = "Notepad";
+        public static string LOGS_PATH = "Logs.txt";
 
         public static int MONITORING_INTERVAL_MS = 1000;
     }
