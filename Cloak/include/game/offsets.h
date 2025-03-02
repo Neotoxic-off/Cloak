@@ -2,6 +2,4 @@
 
 #include <windows.h>
 
-// PHOTON_REALTIME
-const uintptr_t PHOTON_REALTIME_ONSTART = 0x3818830;
-
+const uintptr_t OFFSET_FORCE = 0x3818830;

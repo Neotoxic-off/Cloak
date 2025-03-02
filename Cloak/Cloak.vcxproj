@@ -146,20 +146,20 @@
   <ItemGroup>
     <ClInclude Include="include\framework.h" />
     <ClInclude Include="include\core.h" />
-    <ClInclude Include="include\game\anti_cheat.h" />
     <ClInclude Include="include\game\cheat.h" />
     <ClInclude Include="include\game\offsets.h" />
     <ClInclude Include="include\hooks.h" />
     <ClInclude Include="include\logger.h" />
+    <ClInclude Include="include\logs.h" />
     <ClInclude Include="include\MinHook.h" />
     <ClInclude Include="include\modules\peb.h" />
     <ClInclude Include="include\modules\presence.h" />
     <ClInclude Include="include\peb.h" />
     <ClInclude Include="include\pch.h" />
+    <ClInclude Include="include\game\settings.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="src\game\anti_cheat.cpp" />
     <ClCompile Include="src\game\cheat.cpp" />
     <ClCompile Include="src\hooks.cpp" />
     <ClCompile Include="src\modules\presence.cpp" />

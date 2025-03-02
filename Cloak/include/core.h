@@ -12,7 +12,6 @@
 #include "modules/peb.h"
 #include "modules/presence.h"
 
-#include "game/anti_cheat.h"
 #include "game/cheat.h"
 
 
@@ -28,10 +27,9 @@ class Core
 		Logger logger;
 
 		Presence presence;
-		AntiCheat antiCheat;
 		Cheat cheat;
 		PEB peb;
-	
+
 	public:
 		Core();
 		~Core();

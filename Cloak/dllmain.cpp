@@ -10,14 +10,7 @@ DWORD WINAPI Start(LPVOID lpParam)
 
     core.PatchPEB();
     core.HidePresence();
-    core.AntiCheatNoStart();
-
-    while (true) {
-        if (GetAsyncKeyState(VK_DELETE)) {
-            core.RunCheat();
-        }
-        Sleep(100);
-    }
+    core.RunCheat();
 
     return 0;
 }

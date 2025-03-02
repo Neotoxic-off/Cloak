@@ -9,6 +9,7 @@
 #define LOG_WAIT "*"
 #define LOG_SUCCESS "+"
 #define LOG_ERROR "x"
+#define LOG_INFO ">"
 
 void Log(const char*, const char*);
 

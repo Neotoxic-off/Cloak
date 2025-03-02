@@ -14,16 +14,7 @@ Core::~Core()
 
 void Core::RunCheat()
 {
-	this->cheat.ForceHost();
-	this->cheat.ForceBasementNoKeys();
-	this->cheat.ForceBasementUnlocked();
-	this->cheat.UnlockAllDoors();
-	this->cheat.ForceNeverDead();
-}
-
-void Core::AntiCheatNoStart()
-{
-	this->antiCheat.NoStart();
+	this->cheat.Force();
 }
 
 void Core::HidePresence()
