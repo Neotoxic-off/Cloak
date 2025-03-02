@@ -10,6 +10,7 @@ DWORD WINAPI Start(LPVOID lpParam)
 
     core.ApplySecurityModules();
     core.BypassAntiCheat();
+    core.ForceUsername();
 
     return 0;
 }

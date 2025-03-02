@@ -8,7 +8,7 @@ AntiCheat::AntiCheat()
 
 void DullStart()
 {
-	MessageBoxA(NULL, "Anti-Cheat start Bypassed", "Anti-Cheat", MB_OK);
+	std::cout << "Anti - Cheat start Bypassed" << std::endl;
 }
 
 void AntiCheat::NoStart()

@@ -45,7 +45,7 @@
     <ClInclude Include="include\game\offsets.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\dump\dump.h">
+    <ClInclude Include="include\game\attribute.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -71,7 +71,7 @@
     <ClCompile Include="src\game\anti_cheat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\dump\dump.cpp">
+    <ClCompile Include="src\game\attribute.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -26,6 +26,13 @@ void Core::ApplySecurityModules()
 	PatchPEB();
 }
 
+void Core::ForceUsername()
+{
+	this->logger.Log(LOG_WAIT, "Forcing username");
+	this->attribute.ForceUsername();
+	this->logger.Log(LOG_SUCCESS, "Forced username");
+}
+
 void Core::HidePresence()
 {
 	this->logger.Log(LOG_WAIT, "Hiding presence");
