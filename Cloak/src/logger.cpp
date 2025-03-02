@@ -13,14 +13,14 @@ void Logger::Load() {
     FILE* fDummy;
 
     AllocConsole();
-    //SetConsoleTitleA("Cloak");
+    SetConsoleTitleA("Cloak");
 
     freopen_s(&fDummy, "CONOUT$", "w", stdout);
     freopen_s(&fDummy, "CONOUT$", "w", stderr);
     freopen_s(&fDummy, "CONIN$", "r", stdin);
 }
 
-void Logger::Log(const char* logType, const char* message) {
+void Log(const char* logType, const char* message) {
     std::cout << std::format("[{}] {}", logType, message) << std::endl;
 }
 

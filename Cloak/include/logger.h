@@ -6,9 +6,11 @@
 #include <windows.h>
 #include <tlhelp32.h>
 
-#define LOG_WAIT "WAIT"
-#define LOG_SUCCESS "DONE"
-#define LOG_ERROR "ERRO"
+#define LOG_WAIT "*"
+#define LOG_SUCCESS "+"
+#define LOG_ERROR "x"
+
+void Log(const char*, const char*);
 
 class Logger {
 	private:
@@ -16,7 +18,6 @@ class Logger {
 		void Unload();
 
 	public:
-		void Log(const char*, const char*);
 
 		Logger();
 		~Logger();

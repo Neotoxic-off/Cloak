@@ -45,7 +45,10 @@
     <ClInclude Include="include\game\offsets.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\game\attribute.h">
+    <ClInclude Include="include\game\cheat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\hooks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -71,7 +74,10 @@
     <ClCompile Include="src\game\anti_cheat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\attribute.cpp">
+    <ClCompile Include="src\game\cheat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hooks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

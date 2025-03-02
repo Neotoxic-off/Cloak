@@ -12,6 +12,8 @@ Presence::~Presence()
 
 void Presence::Hide()
 {
+    Log(LOG_WAIT, "Hiding presence");
+
     DWORD pid = GetCurrentProcessId();
     HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
     PROCESSENTRY32 pe;
@@ -26,4 +28,6 @@ void Presence::Hide()
     }
 
     CloseHandle(hSnapshot);
+
+    Log(LOG_SUCCESS, "Hid presence");
 }

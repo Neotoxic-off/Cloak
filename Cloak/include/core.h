@@ -13,7 +13,7 @@
 #include "modules/presence.h"
 
 #include "game/anti_cheat.h"
-#include "game/attribute.h"
+#include "game/cheat.h"
 
 
 #if _WIN64 
@@ -29,20 +29,16 @@ class Core
 
 		Presence presence;
 		AntiCheat antiCheat;
-		Attribute attribute;
+		Cheat cheat;
 		PEB peb;
-
-		void Load();
-		void Unload();
 	
 	public:
 		Core();
 		~Core();
 
-		void BypassAntiCheat();
-
-		void ApplySecurityModules();
 		void HidePresence();
 		void PatchPEB();
-		void ForceUsername();
+
+		void AntiCheatNoStart();
+		void RunCheat();
 };

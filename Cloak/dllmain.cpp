@@ -8,9 +8,16 @@ DWORD WINAPI Start(LPVOID lpParam)
 {
     Core core = Core();
 
-    core.ApplySecurityModules();
-    core.BypassAntiCheat();
-    core.ForceUsername();
+    core.PatchPEB();
+    core.HidePresence();
+    core.AntiCheatNoStart();
+
+    while (true) {
+        if (GetAsyncKeyState(VK_DELETE)) {
+            core.RunCheat();
+        }
+        Sleep(100);
+    }
 
     return 0;
 }

@@ -3,6 +3,8 @@
 #include <windows.h>
 #include <iostream>
 #include "MinHook.h"
+#include "logger.h"
+#include "hooks.h"
 
 void DullStart();
 
@@ -17,5 +19,4 @@ class AntiCheat
 		~AntiCheat();
 
 		void NoStart();
-		void Stop();
 };
