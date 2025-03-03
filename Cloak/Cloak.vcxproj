@@ -151,12 +151,13 @@
     <ClInclude Include="include\hooks.h" />
     <ClInclude Include="include\logger.h" />
     <ClInclude Include="include\logs.h" />
-    <ClInclude Include="include\MinHook.h" />
-    <ClInclude Include="include\modules\peb.h" />
+    <ClInclude Include="include\minhook.h" />
+    <ClInclude Include="include\modules\debugger.h" />
     <ClInclude Include="include\modules\presence.h" />
     <ClInclude Include="include\peb.h" />
     <ClInclude Include="include\pch.h" />
-    <ClInclude Include="include\game\settings.h" />
+    <ClInclude Include="include\utils\settings.h" />
+    <ClInclude Include="include\utils\logs.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
@@ -171,7 +172,7 @@
     </ClCompile>
     <ClCompile Include="src\core.cpp" />
     <ClCompile Include="src\logger.cpp" />
-    <ClCompile Include="src\modules\peb.cpp" />
+    <ClCompile Include="src\modules\debugger.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

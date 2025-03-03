@@ -8,8 +8,9 @@ DWORD WINAPI Start(LPVOID lpParam)
 {
     Core core = Core();
 
-    core.PatchPEB();
-    core.HidePresence();
+    core.PatchDebugger();
+    core.PatchPresence();
+    core.WaitProcess();
     core.RunCheat();
 
     return 0;
@@ -17,12 +18,23 @@ DWORD WINAPI Start(LPVOID lpParam)
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
 {
-	HANDLE hThread = NULL;
+    HANDLE hThread = NULL;
 
-    if (ul_reason_for_call == DLL_PROCESS_ATTACH)
+    switch (ul_reason_for_call)
     {
-        DisableThreadLibraryCalls(hModule);
-        hThread = CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)Start, hModule, 0, nullptr);
+        case DLL_PROCESS_ATTACH:
+            DisableThreadLibraryCalls(hModule);
+            hThread = CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)Start, hModule, 0, nullptr);
+            break;
+
+        case DLL_PROCESS_DETACH:
+            if (hThread)
+            {
+                FreeLibraryAndExitThread(hModule, 0);
+                CloseHandle(hThread);
+                hThread = NULL;
+            }
+            break;
     }
 
     return TRUE;

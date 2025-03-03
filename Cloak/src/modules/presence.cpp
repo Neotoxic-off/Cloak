@@ -10,9 +10,9 @@ Presence::~Presence()
 {
 }
 
-void Presence::Hide()
+void Presence::Patch()
 {
-    Log(LOG_WAIT, "Hiding presence");
+    Log(LOG_WAIT, "Patching presence");
 
     DWORD pid = GetCurrentProcessId();
     HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
@@ -29,5 +29,5 @@ void Presence::Hide()
 
     CloseHandle(hSnapshot);
 
-    Log(LOG_SUCCESS, "Hid presence");
+    Log(LOG_SUCCESS, "Patched presence");
 }

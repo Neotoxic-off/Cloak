@@ -3,11 +3,11 @@
 #include <windows.h>
 #include <iostream>
 
-#include "MinHook.h"
+#include "minhook.h"
 #include "logger.h"
 #include "hooks.h"
 
-#include "game/settings.h"
+#include "utils/settings.h"
 #include "game/offsets.h"
 
 class Cheat
@@ -19,5 +19,5 @@ class Cheat
         Cheat();
         ~Cheat();
 
-		void Force();
+        void Force();
 };

@@ -6,9 +6,9 @@
 
 class Presence
 {
-	public:
-		Presence();
-		~Presence();
+    public:
+        Presence();
+        ~Presence();
 
-		void Hide();
+        void Patch();
 };

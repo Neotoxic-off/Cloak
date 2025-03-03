@@ -30,9 +30,16 @@ void Cheat::Force()
 {
     Log(LOG_WAIT, "Forcing");
 
-    BuildHook(this->Assemly, OFFSET_FORCE, &ForceTrue, nullptr);
+    bool hook_build_status = BuildHook(this->Assemly, OFFSET_FORCE, &ForceTrue, nullptr);
 
-	Log(LOG_SUCCESS, "Forced");
+    if (hook_build_status == true)
+    {
+        Log(LOG_SUCCESS, "Forced");
+    }
+    else
+    {
+        Log(LOG_INFO, "Skipped force");
+    }
 }
 
 Cheat::~Cheat()

@@ -30,13 +30,13 @@
     <ClInclude Include="include\peb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\modules\peb.h">
+    <ClInclude Include="include\modules\debugger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\modules\presence.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\MinHook.h">
+    <ClInclude Include="include\minhook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\game\offsets.h">
@@ -48,10 +48,13 @@
     <ClInclude Include="include\hooks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\game\settings.h">
+    <ClInclude Include="include\utils\settings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\logs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utils\logs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -68,7 +71,7 @@
     <ClCompile Include="src\logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\modules\peb.cpp">
+    <ClCompile Include="src\modules\debugger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\modules\presence.cpp">
