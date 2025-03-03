@@ -8,8 +8,8 @@ DWORD WINAPI Start(LPVOID lpParam)
 {
     Core core = Core();
 
-    core.PatchDebugger();
     core.PatchPresence();
+    core.ApplyProtection();
     core.WaitProcess();
     core.Run();
 

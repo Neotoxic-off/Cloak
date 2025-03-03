@@ -31,7 +31,7 @@ void Core::PatchPresence()
     this->presence.Patch();
 }
 
-void Core::PatchDebugger()
+void Core::ApplyProtection()
 {
-    this->debugger.Patch();
+    this->protection.Apply();
 }

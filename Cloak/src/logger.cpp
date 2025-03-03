@@ -21,6 +21,19 @@ void Logger::Load()
     freopen_s(&fDummy, "CONOUT$", "w", stdout);
     freopen_s(&fDummy, "CONOUT$", "w", stderr);
     freopen_s(&fDummy, "CONIN$", "r", stdin);
+
+    DisplayHeader();
+}
+
+void Logger::DisplayHeader()
+{
+    std::string header = HEADER;
+    std::istringstream stream(header);
+    std::string line;
+
+    while (std::getline(stream, line)) {
+        Log(LOG_INFO, line.c_str());
+    }
 }
 
 void SetConsoleColor(int textColor)
@@ -37,7 +50,7 @@ std::string GetTime()
 
     localtime_s(&timeInfo, &now_time);
 
-    oss << std::put_time(&timeInfo, "%Y-%m-%d %H:%M:%S");
+    oss << std::put_time(&timeInfo, "%H:%M:%S");
 
     return oss.str();
 }
@@ -45,12 +58,11 @@ std::string GetTime()
 void Log(const char* logType, const char* message)
 {
     static std::unordered_map<std::string, int> logColors = {
-        {LOG_INFO, 9},
-        {LOG_ERROR, 12},
-        {LOG_SUCCESS, 10},
-        {LOG_WAIT, 14}
+        {LOG_INFO, 14},    // Yellow
+        {LOG_ERROR, 12},   // Red
+        {LOG_SUCCESS, 10}, // Green
+        {LOG_WAIT, 13}     // Pink
     };
-
     int color = logColors[logType];
 
     std::string timeStr = GetTime();

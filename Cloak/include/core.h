@@ -10,7 +10,7 @@
 
 #include "minhook.h"
 #include "logger.h"
-#include "modules/debugger.h"
+#include "modules/protection.h"
 #include "modules/presence.h"
 
 #include "game/cheat.h"
@@ -29,7 +29,7 @@ class Core
         Logger logger;
 
         Presence presence;
-        Debugger debugger;
+        Protection protection;
         Cheat cheat;
 
     public:
@@ -37,7 +37,7 @@ class Core
         ~Core();
 
         void PatchPresence();
-        void PatchDebugger();
+        void ApplyProtection();
         void WaitProcess();
         void Run();
 };

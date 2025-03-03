@@ -24,6 +24,8 @@ class Logger
         void Load();
         void Unload();
 
+        void DisplayHeader();
+
     public:
         Logger();
         ~Logger();

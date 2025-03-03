@@ -30,7 +30,7 @@
     <ClInclude Include="include\peb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\modules\debugger.h">
+    <ClInclude Include="include\modules\protection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\modules\presence.h">
@@ -71,7 +71,7 @@
     <ClCompile Include="src\logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\modules\debugger.cpp">
+    <ClCompile Include="src\modules\protection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\modules\presence.cpp">

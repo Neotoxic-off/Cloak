@@ -160,7 +160,7 @@
     <ClInclude Include="include\hooks.h" />
     <ClInclude Include="include\logger.h" />
     <ClInclude Include="include\minhook.h" />
-    <ClInclude Include="include\modules\debugger.h" />
+    <ClInclude Include="include\modules\protection.h" />
     <ClInclude Include="include\modules\presence.h" />
     <ClInclude Include="include\peb.h" />
     <ClInclude Include="include\pch.h" />
@@ -181,7 +181,7 @@
     </ClCompile>
     <ClCompile Include="src\core.cpp" />
     <ClCompile Include="src\logger.cpp" />
-    <ClCompile Include="src\modules\debugger.cpp" />
+    <ClCompile Include="src\modules\protection.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
