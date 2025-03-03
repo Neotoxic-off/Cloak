@@ -14,7 +14,7 @@ Core::~Core()
 
 void Core::Run()
 {
-    
+    this->cheat.Run();
 }
 
 void Core::WaitProcess()

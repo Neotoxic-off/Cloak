@@ -7,6 +7,8 @@
 #include "logger.h"
 #include "utils/logs.h"
 
+#define NTDLL "ntdll.dll"
+
 typedef NTSTATUS(NTAPI* pNtSetInformationProcess)
 (
     HANDLE ProcessHandle,

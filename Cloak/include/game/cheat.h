@@ -8,6 +8,8 @@
 #include "hooks.h"
 
 #include "utils/settings.h"
+
+#include "game/base.h"
 #include "game/offsets.h"
 
 class Cheat
@@ -15,7 +17,11 @@ class Cheat
     private:
         uintptr_t Assemly;
 
+        void Example();
+
     public:
         Cheat();
         ~Cheat();
+
+        void Run();
 };

@@ -29,7 +29,7 @@ pNtSetInformationProcess Debugger::GetNtSetInformationProcess()
 {
     Log(LOG_INFO, LOG_WAIT_NTSET_CLEARING);
 
-    HMODULE hNtdll = GetModuleHandleA("ntdll.dll");
+    HMODULE hNtdll = GetModuleHandleA(NTDLL);
     pNtSetInformationProcess NtSetInformationProcess = NULL;
 
     if (!hNtdll)

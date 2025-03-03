@@ -71,7 +71,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LibraryPath>D:\Github\Cloak\Cloak\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(VC_LibraryPath_x64);lib;$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <IncludePath>include;$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
+    <SourcePath>src;$(SourcePath)</SourcePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>include;$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x64);lib;$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <SourcePath>src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -134,6 +141,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -146,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="include\framework.h" />
     <ClInclude Include="include\core.h" />
+    <ClInclude Include="include\game\base.h" />
     <ClInclude Include="include\game\cheat.h" />
     <ClInclude Include="include\game\offsets.h" />
     <ClInclude Include="include\hooks.h" />
@@ -160,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="src\game\base.cpp" />
     <ClCompile Include="src\game\cheat.cpp" />
     <ClCompile Include="src\hooks.cpp" />
     <ClCompile Include="src\modules\presence.cpp" />

@@ -2,4 +2,4 @@
 
 #include <windows.h>
 
-const uintptr_t OFFSET_FORCE = 0x3818830;
+const uintptr_t OFFSET_EXAMPLE = 0x3818830;
