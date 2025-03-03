@@ -15,12 +15,11 @@
 
 #include "game/cheat.h"
 #include "utils/settings.h"
-#include "utils/logs.h"
 
 #if _WIN64 
-#pragma comment(lib, "libMinHook.x64.lib")
+    #pragma comment(lib, "libMinHook.x64.lib")
 #else
-#pragma comment(lib, "libMinHook.x86.lib")
+    #pragma comment(lib, "libMinHook.x86.lib")
 #endif
 
 class Core

@@ -7,6 +7,7 @@
 
 #include "logger.h"
 #include "utils/logs.h"
+#include "hooks.h"
 
 #define NTDLL "ntdll.dll"
 
@@ -35,6 +36,11 @@ private:
     void BypassTimingChecks();
     void NeutralizeExceptionHandlers();
     void UnhookDebugAPIs();
+
+    void RenameModule();
+
+    static DWORD WINAPI HookedGetModuleFileName(HMODULE hModule, LPSTR lpFilename, DWORD nSize);
+    static DWORD(WINAPI* TrueGetModuleFileName)(HMODULE hModule, LPSTR lpFilename, DWORD nSize);
 
 public:
     Protection();

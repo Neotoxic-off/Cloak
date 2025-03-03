@@ -21,6 +21,28 @@ void Protection::ClearPebFlags(PVOID pebAddress)
     Log(LOG_SUCCESS, LOG_SUCCESS_DEBUGGER_CLEARED);
 }
 
+DWORD(WINAPI* Protection::TrueGetModuleFileName)(HMODULE hModule, LPSTR lpFilename, DWORD nSize) = GetModuleFileNameA;
+
+DWORD WINAPI Protection::HookedGetModuleFileName(HMODULE hModule, LPSTR lpFilename, DWORD nSize) {
+    DWORD result = TrueGetModuleFileName(hModule, lpFilename, nSize);
+    if (result != 0) {
+        // Modify the module name
+        std::string newName = "newname.dll";
+        strncpy_s(lpFilename, nSize, newName.c_str(), newName.length());
+    }
+    return result;
+}
+
+void Protection::RenameModule()
+{
+    Log(LOG_INFO, "Renaming module");
+
+    MH_CreateHook(&GetModuleFileNameA, &HookedGetModuleFileName, reinterpret_cast<void**>(&TrueGetModuleFileName));
+    MH_EnableHook(&GetModuleFileNameA);
+
+    Log(LOG_SUCCESS, "Renamed module");
+}
+
 pNtSetInformationProcess Protection::GetNtSetInformationProcess()
 {
     Log(LOG_WAIT, LOG_WAIT_NTSET_CLEARING);
@@ -72,6 +94,7 @@ void Protection::Apply()
 
     if (pebAddress)
     {
+        RenameModule();
         ClearPebFlags(pebAddress);
         DisableDebuggerDetection();
         BypassBreakpoints();

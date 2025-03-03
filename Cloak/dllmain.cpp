@@ -3,6 +3,8 @@
 
 #include <windows.h>
 #include <tlhelp32.h>
+#include <psapi.h>
+#include <iostream>
 
 DWORD WINAPI Start(LPVOID lpParam)
 {
