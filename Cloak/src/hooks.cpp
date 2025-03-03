@@ -25,12 +25,12 @@ bool ValidateOffset(uintptr_t assembly, int offset)
 
     if (!IsValidMemory(targetAddress))
     {
-        Log(LOG_ERROR, "Offset is not ready or invalid");
+        Log(LOG_ERROR, LOG_ERROR_OFFSET_NOT_READY);
 
         return false;
     }
 
-    Log(LOG_SUCCESS, "Offset is ready");
+    Log(LOG_SUCCESS, LOG_SUCCESS_OFFSET_READY);
 
     return true;
 }
@@ -46,13 +46,13 @@ bool BuildHook(uintptr_t assembly, int offset, LPVOID bypass, LPVOID* target)
     {
         create_status = MH_CreateHook((LPVOID)(assembly + offset), bypass, target);
         if (create_status != MH_OK) {
-            Log(LOG_ERROR, std::format("(0x{}) Failed to create hook", offsetStr).c_str());
+            Log(LOG_ERROR, std::format("[0x{}] {}", offsetStr, LOG_ERROR_HOOK_CREATE_FAILED).c_str());
             return false;
         }
 
         enable_status = MH_EnableHook((LPVOID)(assembly + offset));
         if (enable_status != MH_OK) {
-            Log(LOG_ERROR, std::format("(0x{}) Failed to enable hook", offsetStr).c_str());
+            Log(LOG_ERROR, std::format("[0x{}] {}", offsetStr, LOG_ERROR_HOOK_ENABLE_FAILED).c_str());
             return false;
         }
 

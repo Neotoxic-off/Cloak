@@ -51,9 +51,6 @@
     <ClInclude Include="include\utils\settings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\logs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\utils\logs.h">
       <Filter>Header Files</Filter>
     </ClInclude>

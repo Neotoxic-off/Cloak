@@ -12,7 +12,7 @@ Presence::~Presence()
 
 void Presence::Patch()
 {
-    Log(LOG_WAIT, "Patching presence");
+    Log(LOG_WAIT, LOG_WAIT_PRESENCE_PATCHING);
 
     DWORD pid = GetCurrentProcessId();
     HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
@@ -29,5 +29,5 @@ void Presence::Patch()
 
     CloseHandle(hSnapshot);
 
-    Log(LOG_SUCCESS, "Patched presence");
+    Log(LOG_SUCCESS, LOG_SUCCESS_PRESENCE_PATCHED);
 }

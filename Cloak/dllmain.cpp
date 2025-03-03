@@ -11,7 +11,7 @@ DWORD WINAPI Start(LPVOID lpParam)
     core.PatchDebugger();
     core.PatchPresence();
     core.WaitProcess();
-    core.RunCheat();
+    core.Run();
 
     return 0;
 }

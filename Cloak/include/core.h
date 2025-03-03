@@ -39,6 +39,5 @@ class Core
         void PatchPresence();
         void PatchDebugger();
         void WaitProcess();
-
-        void RunCheat();
+        void Run();
 };

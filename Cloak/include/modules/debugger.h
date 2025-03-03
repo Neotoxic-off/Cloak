@@ -3,7 +3,9 @@
 #include <windows.h>
 #include <tlhelp32.h>
 #include <winternl.h>
+
 #include "logger.h"
+#include "utils/logs.h"
 
 typedef NTSTATUS(NTAPI* pNtSetInformationProcess)
 (

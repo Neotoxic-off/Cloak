@@ -150,7 +150,6 @@
     <ClInclude Include="include\game\offsets.h" />
     <ClInclude Include="include\hooks.h" />
     <ClInclude Include="include\logger.h" />
-    <ClInclude Include="include\logs.h" />
     <ClInclude Include="include\minhook.h" />
     <ClInclude Include="include\modules\debugger.h" />
     <ClInclude Include="include\modules\presence.h" />

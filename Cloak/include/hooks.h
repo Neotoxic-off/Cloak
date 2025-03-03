@@ -7,4 +7,6 @@
 #include <sstream>
 #include "logger.h"
 
+#include "utils/logs.h"
+
 bool BuildHook(uintptr_t, int, LPVOID, LPVOID*);

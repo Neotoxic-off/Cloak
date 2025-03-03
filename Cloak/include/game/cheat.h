@@ -18,6 +18,4 @@ class Cheat
     public:
         Cheat();
         ~Cheat();
-
-        void Force();
 };

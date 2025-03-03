@@ -12,7 +12,7 @@ Debugger::~Debugger()
 
 void Debugger::ClearPebFlags(PVOID pebAddress)
 {
-    Log(LOG_INFO, "Clearing PEB debugger flags");
+    Log(LOG_INFO, LOG_WAIT_DEBUGGER_CLEARING);
 
     BYTE* peb = static_cast<BYTE*>(pebAddress);
     DWORD* ntGlobalFlag = NULL;
@@ -22,19 +22,19 @@ void Debugger::ClearPebFlags(PVOID pebAddress)
     ntGlobalFlag = reinterpret_cast<DWORD*>(peb + 0xBC);
     *ntGlobalFlag &= ~0x70;
 
-    Log(LOG_SUCCESS, "PEB debugger flags cleared");
+    Log(LOG_SUCCESS, LOG_SUCCESS_DEBUGGER_CLEARED);
 }
 
 pNtSetInformationProcess Debugger::GetNtSetInformationProcess()
 {
-    Log(LOG_INFO, "Retrieving NtSetInformationProcess function address");
+    Log(LOG_INFO, LOG_WAIT_NTSET_CLEARING);
 
     HMODULE hNtdll = GetModuleHandleA("ntdll.dll");
     pNtSetInformationProcess NtSetInformationProcess = NULL;
 
     if (!hNtdll)
     {
-        Log(LOG_ERROR, "Failed to get ntdll.dll module handle");
+        Log(LOG_ERROR, LOG_ERROR_NTDLL_HANDLE_FAILED);
         return nullptr;
     }
 
@@ -45,11 +45,11 @@ pNtSetInformationProcess Debugger::GetNtSetInformationProcess()
 
     if (!NtSetInformationProcess)
     {
-        Log(LOG_ERROR, "Failed to get NtSetInformationProcess function address");
+        Log(LOG_ERROR, LOG_ERROR_NTSET_RETRIEVE_FAILED);
     }
     else
     {
-        Log(LOG_SUCCESS, "NtSetInformationProcess function address retrieved");
+        Log(LOG_SUCCESS, LOG_SUCCESS_NTSET_RETRIEVED);
     }
 
     return NtSetInformationProcess;
@@ -57,7 +57,7 @@ pNtSetInformationProcess Debugger::GetNtSetInformationProcess()
 
 void Debugger::DisableDebuggerDetection()
 {
-    Log(LOG_INFO, "Disabling debugger detection");
+    Log(LOG_INFO, LOG_INFO_DISABLE_DEBUGGER);
 
     HANDLE hProcess = GetCurrentProcess();
     DWORD isDebuggerPresent = 0;
@@ -66,19 +66,19 @@ void Debugger::DisableDebuggerDetection()
 
     if (!NtSetInformationProcess)
     {
-        Log(LOG_ERROR, "Failed to retrieve NtSetInformationProcess, skipping debugger disabling");
+        Log(LOG_ERROR, LOG_ERROR_NTSET_INFO_RETRIEVE_FAILED);
         return;
     }
 
     NtSetInformationProcess(hProcess, ProcessDebugFlags, &isDebuggerPresent, sizeof(DWORD));
     NtSetInformationProcess(hProcess, ProcessDebugObjectHandle, &hNull, sizeof(HANDLE));
 
-    Log(LOG_SUCCESS, "Debugger detection disabled");
+    Log(LOG_SUCCESS, LOG_SUCCESS_DEBUGGER_DISABLED);
 }
 
 void Debugger::Patch()
 {
-    Log(LOG_WAIT, "Patching debugger detection");
+    Log(LOG_WAIT, LOG_WAIT_PATCHING);
 
     PVOID pebAddress = (PVOID)__readgsqword(0x60);
 
@@ -86,10 +86,10 @@ void Debugger::Patch()
     {
         ClearPebFlags(pebAddress);
         DisableDebuggerDetection();
-        Log(LOG_SUCCESS, "Patched debugger detection");
+        Log(LOG_SUCCESS, LOG_SUCCESS_PATCHED);
     }
     else
     {
-        Log(LOG_ERROR, "Failed to retrieve PEB address");
+        Log(LOG_ERROR, LOG_ERROR_PEB_RETRIEVE_FAILED);
     }
 }

@@ -12,16 +12,18 @@ Core::~Core()
     MH_Uninitialize();
 }
 
-void Core::RunCheat()
+void Core::Run()
 {
-    this->cheat.Force();
+    
 }
 
 void Core::WaitProcess()
 {
-    Log(LOG_WAIT, std::format("Waiting process loading {}ms", WAIT_PROCESS_LOADING_TIME).c_str());
+    Log(LOG_WAIT, std::format("{} {}ms", LOG_WAIT_PROCESS_LOADING, WAIT_PROCESS_LOADING_TIME).c_str());
 
     Sleep(WAIT_PROCESS_LOADING_TIME);
+
+    Log(LOG_SUCCESS, LOG_SUCCESS_PROCESS_LOADING);
 }
 
 void Core::PatchPresence()
