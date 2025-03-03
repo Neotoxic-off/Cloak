@@ -9,6 +9,8 @@
 #include <source_location>
 #include <unordered_map>
 
+#include "utils/settings.h"
+
 #define LOG_WAIT "WAIT"
 #define LOG_SUCCESS "DONE"
 #define LOG_ERROR "ERRO"

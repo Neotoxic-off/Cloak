@@ -16,7 +16,7 @@ void Logger::Load()
     FILE* fDummy;
 
     AllocConsole();
-    SetConsoleTitleA("Cloak");
+    SetConsoleTitleA(std::format("Cloak v{}", VERSION).c_str());
 
     freopen_s(&fDummy, "CONOUT$", "w", stdout);
     freopen_s(&fDummy, "CONOUT$", "w", stderr);
