@@ -5,8 +5,13 @@
 #include <intrin.h>
 #include <cstring>
 
-Protection::Protection() {}
-Protection::~Protection() {}
+Protection::Protection()
+{
+}
+
+Protection::~Protection()
+{
+}
 
 void Protection::ClearPebFlags(PVOID pebAddress)
 {
@@ -114,6 +119,7 @@ void Protection::BypassAntiDebuggingTechniques()
 void Protection::BypassTimingChecks()
 {
     Log(LOG_INFO, LOG_INFO_NEUTRALIZING_TIMING_CHECKS);
+
     BYTE patch[] = { 0x31, 0xC0, 0xC3 };
     DWORD oldProtect;
     HMODULE hKernel32 = GetModuleHandleA("kernel32.dll");

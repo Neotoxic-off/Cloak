@@ -31,7 +31,6 @@ class Protection
         pNtSetInformationProcess GetNtSetInformationProcess();
         void DisableDebuggerDetection();
         void BypassBreakpoints();
-        void AllowMemoryAccess();
         void BypassAntiDebuggingTechniques();
         void BypassTimingChecks();
         void NeutralizeExceptionHandlers();
