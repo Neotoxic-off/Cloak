@@ -26,25 +26,20 @@ typedef NTSTATUS(NTAPI* pNtDelayExecution)(BOOL Alertable, PLARGE_INTEGER DelayI
 
 class Protection
 {
-private:
-    void ClearPebFlags(PVOID);
-    pNtSetInformationProcess GetNtSetInformationProcess();
-    void DisableDebuggerDetection();
-    void BypassBreakpoints();
-    void AllowMemoryAccess();
-    void BypassAntiDebuggingTechniques();
-    void BypassTimingChecks();
-    void NeutralizeExceptionHandlers();
-    void UnhookDebugAPIs();
+    private:
+        void ClearPebFlags(PVOID);
+        pNtSetInformationProcess GetNtSetInformationProcess();
+        void DisableDebuggerDetection();
+        void BypassBreakpoints();
+        void AllowMemoryAccess();
+        void BypassAntiDebuggingTechniques();
+        void BypassTimingChecks();
+        void NeutralizeExceptionHandlers();
+        void UnhookDebugAPIs();
 
-    void RenameModule();
+    public:
+        Protection();
+        ~Protection();
 
-    static DWORD WINAPI HookedGetModuleFileName(HMODULE hModule, LPSTR lpFilename, DWORD nSize);
-    static DWORD(WINAPI* TrueGetModuleFileName)(HMODULE hModule, LPSTR lpFilename, DWORD nSize);
-
-public:
-    Protection();
-    ~Protection();
-
-    void Apply();
+        void Apply();
 };

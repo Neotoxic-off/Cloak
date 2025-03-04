@@ -3,15 +3,15 @@
 
 #include <windows.h>
 
-#define VERSION "0.1.0"
+#define VERSION "0.2.0"
 #define HEADER R"(
 
 
-O       o O       o O       oO       o O       o O       o
-| O   o | | O   o | | O   o || O   o | | O   o | | O   o |
-| | O | | | | O | | | | O | || | O | | | | O | | | | O | |
-| o   O | | o   O | | o   O || o   O | | o   O | | o   O |
-o       O o       O o       Oo       O o       O o       O
+O       o O       o O       o O       o O       o O       o
+| O   o | | O   o | | O   o | | O   o | | O   o | | O   o |
+| | O | | | | O | | | | O | | | | O | | | | O | | | | O | |
+| o   O | | o   O | | o   O | | o   O | | o   O | | o   O |
+o       O o       O o       O o       O o       O o       O
 
 
 )"

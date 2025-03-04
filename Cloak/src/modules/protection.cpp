@@ -21,28 +21,6 @@ void Protection::ClearPebFlags(PVOID pebAddress)
     Log(LOG_SUCCESS, LOG_SUCCESS_DEBUGGER_CLEARED);
 }
 
-DWORD(WINAPI* Protection::TrueGetModuleFileName)(HMODULE hModule, LPSTR lpFilename, DWORD nSize) = GetModuleFileNameA;
-
-DWORD WINAPI Protection::HookedGetModuleFileName(HMODULE hModule, LPSTR lpFilename, DWORD nSize) {
-    DWORD result = TrueGetModuleFileName(hModule, lpFilename, nSize);
-    if (result != 0) {
-        // Modify the module name
-        std::string newName = "newname.dll";
-        strncpy_s(lpFilename, nSize, newName.c_str(), newName.length());
-    }
-    return result;
-}
-
-void Protection::RenameModule()
-{
-    Log(LOG_INFO, "Renaming module");
-
-    MH_CreateHook(&GetModuleFileNameA, &HookedGetModuleFileName, reinterpret_cast<void**>(&TrueGetModuleFileName));
-    MH_EnableHook(&GetModuleFileNameA);
-
-    Log(LOG_SUCCESS, "Renamed module");
-}
-
 pNtSetInformationProcess Protection::GetNtSetInformationProcess()
 {
     Log(LOG_WAIT, LOG_WAIT_NTSET_CLEARING);
@@ -94,11 +72,9 @@ void Protection::Apply()
 
     if (pebAddress)
     {
-        RenameModule();
         ClearPebFlags(pebAddress);
         DisableDebuggerDetection();
         BypassBreakpoints();
-        AllowMemoryAccess();
         BypassAntiDebuggingTechniques();
         BypassTimingChecks();
         NeutralizeExceptionHandlers();
@@ -129,69 +105,6 @@ void Protection::BypassBreakpoints()
 
     Log(LOG_ERROR, LOG_ERROR_HOOK_ENABLE_FAILED);
 }
-
-void Protection::AllowMemoryAccess()
-{
-    Log(LOG_INFO, LOG_INFO_ALLOWING_MEMORY_ACCESS);
-
-    HMODULE hNtdll = GetModuleHandleA(NTDLL);
-    DWORD oldProtect = NULL;
-    FARPROC NtQueryVirtualMemory = NULL;
-    FARPROC NtQuerySystemInformation = NULL;
-
-    if (!hNtdll)
-    {
-        Log(LOG_ERROR, LOG_ERROR_NTDLL_HANDLE_FAILED);
-        return;
-    }
-
-    NtQueryVirtualMemory = GetProcAddress(hNtdll, "NtQueryVirtualMemory");
-
-    if (NtQueryVirtualMemory)
-    {
-        BYTE patch[] = { 0x31, 0xC0, 0xC3 }; // xor eax, eax; ret
-        oldProtect = NULL;
-
-        if (VirtualProtect(NtQueryVirtualMemory, sizeof(patch), PAGE_EXECUTE_READWRITE, &oldProtect))
-        {
-            memcpy(NtQueryVirtualMemory, patch, sizeof(patch));
-            VirtualProtect(NtQueryVirtualMemory, sizeof(patch), oldProtect, &oldProtect);
-            Log(LOG_SUCCESS, LOG_SUCCESS_MEMORY_QUERY_BYPASSED);
-        }
-        else
-        {
-            Log(LOG_ERROR, LOG_ERROR_MEMORY_PROTECTION_FAILED);
-        }
-    }
-    else
-    {
-        Log(LOG_ERROR, LOG_ERROR_NTQUERYVIRTUALMEMORY_FAILED);
-    }
-
-    NtQuerySystemInformation = GetProcAddress(hNtdll, "NtQuerySystemInformation");
-
-    if (NtQuerySystemInformation)
-    {
-        BYTE patch[] = { 0x33, 0xC0, 0xC2, 0x10, 0x00 }; // xor eax, eax; ret 10h
-        oldProtect = NULL;
-
-        if (VirtualProtect(NtQuerySystemInformation, sizeof(patch), PAGE_EXECUTE_READWRITE, &oldProtect))
-        {
-            memcpy(NtQuerySystemInformation, patch, sizeof(patch));
-            VirtualProtect(NtQuerySystemInformation, sizeof(patch), oldProtect, &oldProtect);
-            Log(LOG_SUCCESS, LOG_SUCCESS_SYSTEM_QUERY_BYPASSED);
-
-            return;
-        }
-
-        Log(LOG_ERROR, LOG_ERROR_SYSTEM_QUERY_PATCH_FAILED);
-        return;
-    }
-
-    Log(LOG_ERROR, LOG_ERROR_NTQUERYSYSTEMINFORMATION_FAILED);
-    return;
-}
-
 
 void Protection::BypassAntiDebuggingTechniques()
 {

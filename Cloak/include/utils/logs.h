@@ -3,6 +3,10 @@
 static const char* LOG_ERROR_OFFSET_NOT_READY = "Offset is not ready or invalid";
 static const char* LOG_SUCCESS_OFFSET_READY = "Offset is ready";
 
+static const char* LOG_WAIT_LOADING_MODULE = "Loading cheat module";
+static const char* LOG_SUCCESS_LOADING_MODULE = "Loaded cheat module";
+static const char* LOG_ERROR_LOADING_MODULE = "Failed cheat module";
+
 static const char* LOG_ERROR_HOOK_CREATE_FAILED = "Failed to create hook";
 static const char* LOG_ERROR_HOOK_ENABLE_FAILED = "Failed to enable hook";
 
