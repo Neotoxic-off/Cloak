@@ -5,6 +5,8 @@
 #include <iostream>
 #include <stdio.h>
 #include <format>
+#include <functional>
+#include <map>
 #include <windows.h>
 #include <tlhelp32.h>
 
@@ -25,6 +27,8 @@
 class Core
 {
     private:
+        bool running;
+
         Logger logger;
 
         Presence presence;

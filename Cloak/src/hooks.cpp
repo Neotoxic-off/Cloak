@@ -40,19 +40,18 @@ bool BuildHook(uintptr_t assembly, int offset, LPVOID bypass, LPVOID* target)
     bool offset_status = false;
     MH_STATUS create_status = MH_UNKNOWN;
     MH_STATUS enable_status = MH_UNKNOWN;
-    std::string offsetStr = std::format("{:X}", offset);
 
     if (ValidateOffset(assembly, offset) == true)
     {
         create_status = MH_CreateHook((LPVOID)(assembly + offset), bypass, target);
         if (create_status != MH_OK) {
-            Log(LOG_ERROR, std::format("[0x{}] {}", offsetStr, LOG_ERROR_HOOK_CREATE_FAILED).c_str());
+            Log(LOG_ERROR, std::format("[0x{:x}] {}", offset, LOG_ERROR_HOOK_CREATE_FAILED).c_str());
             return false;
         }
 
         enable_status = MH_EnableHook((LPVOID)(assembly + offset));
         if (enable_status != MH_OK) {
-            Log(LOG_ERROR, std::format("[0x{}] {}", offsetStr, LOG_ERROR_HOOK_ENABLE_FAILED).c_str());
+            Log(LOG_ERROR, std::format("[0x{:x}] {}", offset, LOG_ERROR_HOOK_ENABLE_FAILED).c_str());
             return false;
         }
 

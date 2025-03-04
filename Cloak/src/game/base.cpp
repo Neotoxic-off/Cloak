@@ -3,31 +3,31 @@
 
 #include "game/base.h"
 
-int __stdcall ForceZero()
+int __stdcall DummyZero()
 {
-    Log(LOG_INFO, "Forced zero");
+    Log(LOG_INFO, "[DUMMY] Handled: zero");
     return 0;
 }
 
-bool __stdcall ForceTrue()
+bool __stdcall DummyTrue()
 {
-    Log(LOG_INFO, "Forced true");
+    Log(LOG_INFO, "[DUMMY] Handled: true");
     return true;
 }
 
-bool __stdcall ForceFalse()
+bool __stdcall DummyFalse()
 {
-    Log(LOG_INFO, "Forced false");
+    Log(LOG_INFO, "[DUMMY] Handled: false");
     return false;
 }
 
-int __stdcall ForceOne()
+int __stdcall DummyOne()
 {
-    Log(LOG_INFO, "Forced one");
+    Log(LOG_INFO, "[DUMMY] Handled: one");
     return 1;
 }
 
-void __stdcall ForceBypass()
+void __stdcall DummySkip()
 {
-    Log(LOG_INFO, "Forced bypass");
+    Log(LOG_INFO, "[DUMMY] Handled: skip");
 }

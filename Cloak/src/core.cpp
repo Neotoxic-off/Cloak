@@ -4,6 +4,8 @@
 
 Core::Core()
 {
+    this->running = true;
+
     MH_Initialize();
 }
 
@@ -16,6 +18,20 @@ Core::~Core()
 void Core::Run()
 {
     this->cheat.Run();
+
+    std::map<int, std::function<void()>> keyActions = {
+        {KEY_RELOAD_CHEAT_MODULES, [this]() { this->cheat.ReloadCheatModules(); }},
+        {KEY_UNLOAD, [this]() { this->running = false; }}
+    };
+
+    while (this->running) {
+        for (const auto& [key, action] : keyActions) {
+            if (GetAsyncKeyState(key)) {
+                action();
+            }
+        }
+        Sleep(WAIT_KEY_INPUT_TIME);
+    }
 }
 
 void Core::WaitProcess()

@@ -47,3 +47,16 @@ static const char* LOG_ERROR_NTQUERYVIRTUALMEMORY_FAILED = "Failed to locate NtQ
 static const char* LOG_SUCCESS_SYSTEM_QUERY_BYPASSED = "System information query protection bypassed";
 static const char* LOG_ERROR_SYSTEM_QUERY_PATCH_FAILED = "Failed to modify system query protection";
 static const char* LOG_ERROR_NTQUERYSYSTEMINFORMATION_FAILED = "Failed to locate NtQuerySystemInformation";
+
+static const char* LOG_WAIT_PREPARE_CHEAT_MODULES = "Preparing cheat modules";
+static const char* LOG_INFO_SKIP_CHEAT_MODULES = "Skipping cheat module preparation";
+static const char* LOG_INFO_LOADED_CATALOG = "cheat modules loaded";
+static const char* LOG_WAIT_BUILD_CATALOG = "Building catalog modules";
+static const char* LOG_WAIT_BUILD_MODULES = "Building modules";
+static const char* LOG_SUCCESS_BUILD_MODULES = "Built modules";
+static const char* LOG_SUCCESS_BUILD_MODULE = "Built module";
+static const char* LOG_ERROR_BUILD_MODULE = "Failed building module";
+static const char* LOG_SUCCESS_BUILT_CATALOG = "Built catalog modules";
+static const char* LOG_WAIT_LOADING_CATALOG_MODULE = "Loading catalog module";
+static const char* LOG_SUCCESS_LOADED_CATALOG_MODULE = "Loaded catalog module";
+static const char* LOG_ERROR_FAILED_CATALOG_MODULE = "Failed loading catalog module";

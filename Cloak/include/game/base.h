@@ -5,8 +5,8 @@
 
 #include "utils/settings.h"
 
-int __stdcall ForceZero();
-bool __stdcall ForceTrue();
-bool __stdcall ForceFalse();
-int __stdcall ForceOne();
-void __stdcall ForceBypass();
+int __stdcall DummyZero();
+bool __stdcall DummyTrue();
+bool __stdcall DummyFalse();
+int __stdcall DummyOne();
+void __stdcall DummySkip();

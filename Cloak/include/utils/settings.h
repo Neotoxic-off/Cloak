@@ -16,5 +16,8 @@ o       O o       O o       O o       O o       O o       O
 
 )"
 
-static const LPCWSTR MODULE_NAME = L"GameAssembly.dll";
 static const int WAIT_PROCESS_LOADING_TIME = 5000;
+static const int WAIT_KEY_INPUT_TIME = 100;
+
+static const int KEY_RELOAD_CHEAT_MODULES = VK_F1;
+static const int KEY_UNLOAD = VK_F4;

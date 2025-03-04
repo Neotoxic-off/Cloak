@@ -10,71 +10,76 @@ Cheat::~Cheat()
 {
 }
 
-void Cheat::LoadAssembly()
+Module Cheat::GetModule(const char* moduleName)
 {
-    Log(LOG_WAIT, LOG_WAIT_LOADING_MODULE);
+    bool exists = this->Modules.contains(moduleName);
 
-    this->Assemly = (uintptr_t)GetModuleHandle(MODULE_NAME);
-    this->AssemblyLoaded = false;
-
-    if (this->Assemly)
+    if (exists == true)
     {
-        this->AssemblyLoaded = true;
-        Log(LOG_SUCCESS, LOG_SUCCESS_LOADING_MODULE);
-        return;
+        return Modules[moduleName];
     }
 
-    Log(LOG_ERROR, LOG_ERROR_LOADING_MODULE);
+    return Module{};
+}
+
+void Cheat::LoadModules()
+{
+    Log(LOG_WAIT, LOG_WAIT_BUILD_MODULES);
+
+    for (std::map<const char*, Module>::iterator it = Modules.begin(); it != Modules.end(); ++it)
+    {
+        this->Modules[it->first].handle = (uintptr_t)GetModuleHandle(it->second.lpName);
+
+        if (it->second.handle)
+        {
+            this->Modules[it->first].loaded = true;
+            Log(LOG_SUCCESS, std::format("[{}] {}", it->first, LOG_SUCCESS_BUILD_MODULE).c_str());
+        }
+        else
+        {
+            this->Modules[it->first].loaded = false;
+            Log(LOG_ERROR, std::format("[{}] {}", it->first, LOG_ERROR_BUILD_MODULE).c_str());
+        }
+    }
+
+    Log(LOG_SUCCESS, LOG_SUCCESS_BUILD_MODULES);
 }
 
 void Cheat::Run()
 {
-    LoadAssembly();
-
-    if (this->AssemblyLoaded == true)
-    {
-        Log(LOG_WAIT, "Peparing cheat modules");
-
-        LoadCatalog();
-        BuildCatalog();
-        return;
-    }
-    Log(LOG_INFO, "Skip peparing cheat modules");
+    LoadModules();
+    BuildCheatModules();
 }
 
-void Cheat::LoadCatalog()
+void Cheat::ReloadCheatModules()
 {
-    this->Catalog = {
-        { this->Assemly, OFFSET_EXAMPLE, ForceTrue, nullptr }
-    };
-
-    Log(LOG_INFO, std::format("Loaded {} cheat modules", this->Catalog.size()).c_str());
-
+    BuildCheatModules();
 }
 
-void Cheat::BuildCatalog()
+void Cheat::BuildCheatModules()
 {
-    Log(LOG_WAIT, std::format("Building catalog modules").c_str());
+    Log(LOG_WAIT, LOG_WAIT_BUILD_CATALOG);
 
-    for (std::vector<Module>::iterator it = Catalog.begin(); it != Catalog.end(); ++it)
+    for (std::vector<CheatModule>::iterator it = CheatModules.begin(); it != CheatModules.end(); ++it)
     {
-        ExecuteCatalog(it->assembly, it->offset, it->bypass, it->target);
+        ExecuteCheatModule(it->moduleName, it->offset, it->bypass, it->target);
     }
 
-    Log(LOG_SUCCESS, std::format("Built catalog modules").c_str());
+    Log(LOG_SUCCESS, LOG_SUCCESS_BUILT_CATALOG);
 }
 
-void Cheat::ExecuteCatalog(uintptr_t assembly, int offset, LPVOID bypass, LPVOID* target)
+void Cheat::ExecuteCheatModule(const char* moduleName, int offset, LPVOID bypass, LPVOID* target)
 {
-    Log(LOG_WAIT, std::format("[0x{:x}+0x{:x}] Loading catalog module", assembly, offset).c_str());
+    Log(LOG_WAIT, std::format("[{}+0x{:x}] {}", moduleName, offset, LOG_WAIT_LOADING_CATALOG_MODULE).c_str());
 
-    bool hook_build_status = BuildHook(assembly, offset, &bypass, target);
+    Module module = GetModule(moduleName);
+    bool hook_build_status = BuildHook(module.handle, offset, &bypass, target);
 
     if (hook_build_status)
     {
-        Log(LOG_SUCCESS, std::format("[0x{:x}+0x{:x}] Loaded catalog module", assembly, offset).c_str());
+        Log(LOG_SUCCESS, std::format("[{}+0x{:x}] {}", moduleName, offset, LOG_SUCCESS_LOADED_CATALOG_MODULE).c_str());
         return;
     }
 
-    Log(LOG_ERROR, std::format("[0x{:x}+0x{:x}] Failed loading catalog module", assembly, offset).c_str());
+    Log(LOG_ERROR, std::format("[{}+0x{:x}] {}", moduleName, offset, LOG_ERROR_FAILED_CATALOG_MODULE).c_str());
 }
