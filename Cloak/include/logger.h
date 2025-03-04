@@ -25,6 +25,7 @@ class Logger
         void Unload();
 
         void DisplayHeader();
+        void DisplayKeysMenu();
 
     public:
         Logger();

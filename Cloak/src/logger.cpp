@@ -23,6 +23,26 @@ void Logger::Load()
     freopen_s(&fDummy, "CONIN$", "r", stdin);
 
     DisplayHeader();
+    DisplayKeysMenu();
+}
+
+std::string GetKeyName(int virtualKey)
+{
+    UINT scanCode = MapVirtualKey(virtualKey, MAPVK_VK_TO_VSC);
+    char keyName[128] = { 0 };
+
+    if (GetKeyNameTextA(scanCode << 16, keyName, sizeof(keyName))) {
+        return std::string(keyName);
+    }
+
+    return "Unknown Key";
+}
+
+void Logger::DisplayKeysMenu()
+{
+    for (const auto& [key, description] : KEYS_MENU) {
+        Log(LOG_INFO, std::format("[{}] {}", GetKeyName(key), description).c_str());
+    }
 }
 
 void Logger::DisplayHeader()
