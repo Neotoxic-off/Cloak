@@ -11,11 +11,12 @@
 #include <tlhelp32.h>
 
 #include "minhook.h"
-#include "logger.h"
 #include "modules/protection.h"
 #include "modules/presence.h"
 
-#include "game/cheat.h"
+#include "cheats/factory.h"
+
+#include "utils/logger.h"
 #include "utils/settings.h"
 
 #if _WIN64 
@@ -33,7 +34,7 @@ class Core
 
         Presence presence;
         Protection protection;
-        Cheat cheat;
+        Factory factory;
 
     public:
         Core();

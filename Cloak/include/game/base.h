@@ -1,7 +1,7 @@
 #pragma once
 
 #include "minhook.h"
-#include "logger.h"
+#include "utils/logger.h"
 
 #include "utils/settings.h"
 

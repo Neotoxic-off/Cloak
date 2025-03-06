@@ -24,7 +24,7 @@
     <ClInclude Include="include\core.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\logger.h">
+    <ClInclude Include="include\utils\logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\peb.h">
@@ -39,13 +39,13 @@
     <ClInclude Include="include\minhook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\game\offsets.h">
+    <ClInclude Include="include\utils\offsets.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\game\cheat.h">
+    <ClInclude Include="include\cheats\factory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\hooks.h">
+    <ClInclude Include="include\utils\hooks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\utils\settings.h">
@@ -55,6 +55,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\game\base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\game\module.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utils\modules.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cheats\cheat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -68,7 +77,7 @@
     <ClCompile Include="src\core.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\logger.cpp">
+    <ClCompile Include="src\utils\logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\modules\protection.cpp">
@@ -77,13 +86,19 @@
     <ClCompile Include="src\modules\presence.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\cheat.cpp">
+    <ClCompile Include="src\cheats\factory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\hooks.cpp">
+    <ClCompile Include="src\utils\hooks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\game\base.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\module.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cheats\cheat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

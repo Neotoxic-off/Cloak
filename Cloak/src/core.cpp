@@ -17,10 +17,10 @@ Core::~Core()
 
 void Core::Run()
 {
-    this->cheat.Run();
+    this->factory.Initialize();
 
     std::map<int, std::function<void()>> keyActions = {
-        {KEY_RELOAD_CHEAT_MODULES, [this]() { this->cheat.ReloadCheatModules(); }},
+        {KEY_REHOOK_CHEAT_MODULES, [this]() { this->factory.ReHookCheats(); }},
         {KEY_UNLOAD, [this]() { this->running = false; }}
     };
 
@@ -32,6 +32,7 @@ void Core::Run()
         }
         Sleep(WAIT_KEY_INPUT_TIME);
     }
+    Log(LOG_INFO, "Cloak unloaded");
 }
 
 void Core::WaitProcess()
@@ -39,8 +40,6 @@ void Core::WaitProcess()
     Log(LOG_WAIT, std::format("{} {}ms", LOG_WAIT_PROCESS_LOADING, WAIT_PROCESS_LOADING_TIME).c_str());
 
     Sleep(WAIT_PROCESS_LOADING_TIME);
-
-    Log(LOG_SUCCESS, LOG_SUCCESS_PROCESS_LOADING);
 }
 
 void Core::PatchPresence()

@@ -5,9 +5,9 @@
 #include <winternl.h>
 #include <intrin.h>
 
-#include "logger.h"
+#include "utils/logger.h"
 #include "utils/logs.h"
-#include "hooks.h"
+#include "utils/hooks.h"
 
 #define NTDLL "ntdll.dll"
 
@@ -31,10 +31,8 @@ class Protection
         pNtSetInformationProcess GetNtSetInformationProcess();
         void DisableDebuggerDetection();
         void BypassBreakpoints();
-        void BypassAntiDebuggingTechniques();
         void BypassTimingChecks();
         void NeutralizeExceptionHandlers();
-        void UnhookDebugAPIs();
 
     public:
         Protection();

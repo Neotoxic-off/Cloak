@@ -29,6 +29,7 @@ void Protection::ClearPebFlags(PVOID pebAddress)
 pNtSetInformationProcess Protection::GetNtSetInformationProcess()
 {
     Log(LOG_WAIT, LOG_WAIT_NTSET_CLEARING);
+
     HMODULE hNtdll = GetModuleHandleA("ntdll.dll");
     if (!hNtdll)
     {
@@ -39,18 +40,14 @@ pNtSetInformationProcess Protection::GetNtSetInformationProcess()
     pNtSetInformationProcess NtSetInfoProc = (pNtSetInformationProcess)GetProcAddress(hNtdll, "NtSetInformationProcess");
     if (!NtSetInfoProc)
     {
-        Log(LOG_ERROR, LOG_ERROR_NTSET_RETRIEVE_FAILED);
         return nullptr;
     }
 
-    Log(LOG_SUCCESS, LOG_SUCCESS_NTSET_RETRIEVED);
     return NtSetInfoProc;
 }
 
 void Protection::DisableDebuggerDetection()
 {
-    Log(LOG_INFO, LOG_INFO_DISABLE_DEBUGGER);
-
     DWORD oldProtect;
 
     typedef BOOL(WINAPI* pIsDebuggerPresent)();
@@ -80,22 +77,16 @@ void Protection::Apply()
         ClearPebFlags(pebAddress);
         DisableDebuggerDetection();
         BypassBreakpoints();
-        BypassAntiDebuggingTechniques();
         BypassTimingChecks();
         NeutralizeExceptionHandlers();
-        UnhookDebugAPIs();
         Log(LOG_SUCCESS, LOG_SUCCESS_PATCHED);
 
         return;
     }
-
-    Log(LOG_ERROR, LOG_ERROR_PEB_RETRIEVE_FAILED);
 }
 
 void Protection::BypassBreakpoints()
 {
-    Log(LOG_INFO, LOG_INFO_BYPASSING_BREAKPOINTS);
-
     CONTEXT ctx = {};
     ctx.ContextFlags = CONTEXT_DEBUG_REGISTERS;
     HANDLE hThread = GetCurrentThread();
@@ -111,15 +102,8 @@ void Protection::BypassBreakpoints()
     Log(LOG_ERROR, LOG_ERROR_HOOK_ENABLE_FAILED);
 }
 
-void Protection::BypassAntiDebuggingTechniques()
-{
-    Log(LOG_INFO, LOG_INFO_BYPASSING_ANTI_DEBUG);
-}
-
 void Protection::BypassTimingChecks()
 {
-    Log(LOG_INFO, LOG_INFO_NEUTRALIZING_TIMING_CHECKS);
-
     BYTE patch[] = { 0x31, 0xC0, 0xC3 };
     DWORD oldProtect;
     HMODULE hKernel32 = GetModuleHandleA("kernel32.dll");
@@ -130,19 +114,11 @@ void Protection::BypassTimingChecks()
         VirtualProtect(GetTickCountAddr, sizeof(patch), PAGE_EXECUTE_READWRITE, &oldProtect);
         memcpy(GetTickCountAddr, patch, sizeof(patch));
         VirtualProtect(GetTickCountAddr, sizeof(patch), oldProtect, &oldProtect);
-
-        Log(LOG_SUCCESS, LOG_SUCCESS_PROCESS_LOADING);
     }
 }
 
 void Protection::NeutralizeExceptionHandlers()
 {
-    Log(LOG_INFO, LOG_INFO_NEUTRALIZING_EXCEPTIONS);
-
     SetUnhandledExceptionFilter(NULL);
 }
 
-void Protection::UnhookDebugAPIs()
-{
-    Log(LOG_INFO, LOG_INFO_RESTORING_HOOKS);
-}
