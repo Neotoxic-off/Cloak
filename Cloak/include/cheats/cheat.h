@@ -20,6 +20,6 @@ class Cheat
         Cheat(Module*, int, LPVOID, LPVOID*);
         ~Cheat();
 
-        void Hook();
-        void UnHook();
+        bool Hook();
+        bool UnHook();
 };

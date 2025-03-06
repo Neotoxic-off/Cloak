@@ -21,18 +21,17 @@ void Core::Run()
 
     std::map<int, std::function<void()>> keyActions = {
         {KEY_REHOOK_CHEAT_MODULES, [this]() { this->factory.ReHookCheats(); }},
-        {KEY_UNLOAD, [this]() { this->running = false; }}
+        {KEY_UNLOAD, [this]() { UnLoad(); }}
     };
 
     while (this->running) {
+        Sleep(WAIT_KEY_INPUT_TIME);
         for (const auto& [key, action] : keyActions) {
             if (GetAsyncKeyState(key)) {
                 action();
             }
         }
-        Sleep(WAIT_KEY_INPUT_TIME);
     }
-    Log(LOG_INFO, "Cloak unloaded");
 }
 
 void Core::WaitProcess()
@@ -50,4 +49,12 @@ void Core::PatchPresence()
 void Core::ApplyProtection()
 {
     this->protection.Apply();
+}
+
+void Core::UnLoad()
+{
+    this->running = false;
+    this->factory.UnHookCheats();
+
+    Log(LOG_INFO, "Cloak unloaded");
 }

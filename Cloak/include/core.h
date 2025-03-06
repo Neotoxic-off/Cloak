@@ -44,4 +44,5 @@ class Core
         void ApplyProtection();
         void WaitProcess();
         void Run();
+        void UnLoad();
 };

@@ -16,28 +16,30 @@ Cheat::~Cheat()
 
 }
 
-void Cheat::Hook()
+bool Cheat::Hook()
 {
     Log(LOG_WAIT, LOG_WAIT_HOOKING_CHEAT);
 
     if (BuildHook(this->module, this->offset, this->bypass, this->target))
     {
         Log(LOG_SUCCESS, LOG_SUCCESS_HOOKING_CHEAT);
-        return;
+        return true;
     }
 
     Log(LOG_ERROR, LOG_ERROR_HOOKING_CHEAT);
+    return false;
 }
 
-void Cheat::UnHook()
+bool Cheat::UnHook()
 {
     Log(LOG_WAIT, LOG_WAIT_UNHOOKING_CHEAT);
 
     if (RemoveHook(this->module, this->offset))
     {
         Log(LOG_SUCCESS, LOG_SUCCESS_UNHOOKING_CHEAT);
-        return;
+        return true;
     }
 
     Log(LOG_ERROR, LOG_ERROR_UNHOOKING_CHEAT);
+    return false;
 }
