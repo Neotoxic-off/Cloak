@@ -8,7 +8,7 @@
 - Cloak must be rebuild for your own usage and edit the files
 
 ## Demo
-[![Demo](https://raw.githubusercontent.com/Neotoxic-off/Cloak/master/Assets/splash.png)](https://raw.githubusercontent.com/Neotoxic-off/Cloak/master/Assets/demo.mp4)
+<image src="Assets/demo.gif"/>
 
 ## Important
 I provide my tools and resources as-is, without any guarantees or warranties regarding their usage.
