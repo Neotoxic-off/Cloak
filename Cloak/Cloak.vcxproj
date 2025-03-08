@@ -158,8 +158,9 @@
     <ClInclude Include="include\game\base.h" />
     <ClInclude Include="include\cheats\factory.h" />
     <ClInclude Include="include\game\module.h" />
-    <ClInclude Include="include\utils\modules.h" />
-    <ClInclude Include="include\utils\offsets.h" />
+    <ClInclude Include="include\constants\offsets.h" />
+    <ClInclude Include="include\user\sample.h" />
+    <ClInclude Include="include\constants\modules.h" />
     <ClInclude Include="include\utils\hooks.h" />
     <ClInclude Include="include\utils\logger.h" />
     <ClInclude Include="include\minhook.h" />
@@ -176,6 +177,7 @@
     <ClCompile Include="src\game\base.cpp" />
     <ClCompile Include="src\cheats\factory.cpp" />
     <ClCompile Include="src\game\module.cpp" />
+    <ClCompile Include="src\user\sample.cpp" />
     <ClCompile Include="src\utils\hooks.cpp" />
     <ClCompile Include="src\modules\presence.cpp" />
     <ClCompile Include="src\pch.cpp">

@@ -21,10 +21,9 @@
 
 class Factory
 {
-    private:
-        std::vector<Cheat> Cheats = {};
-
     public:
+        std::vector<Cheat> cheats;
+
         Factory();
         ~Factory();
 

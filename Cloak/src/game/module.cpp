@@ -31,3 +31,4 @@ void Module::Initialize()
     this->loaded = false;
     Log(LOG_ERROR, std::format("[{}] {}", this->name, LOG_ERROR_BUILDING_MODULE).c_str());
 }
+ 

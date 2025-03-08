@@ -11,10 +11,11 @@
 #include <tlhelp32.h>
 
 #include "minhook.h"
+
 #include "modules/protection.h"
 #include "modules/presence.h"
 
-#include "cheats/factory.h"
+#include "user/sample.h"
 
 #include "utils/logger.h"
 #include "utils/settings.h"
@@ -34,7 +35,8 @@ class Core
 
         Presence presence;
         Protection protection;
-        Factory factory;
+
+        Sample sample;
 
     public:
         Core();

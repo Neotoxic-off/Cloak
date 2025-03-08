@@ -39,8 +39,6 @@ bool BuildHook(Module* module, int offset, LPVOID bypass, LPVOID* target)
 
     if (ValidateOffset(module->handle, offset) == true)
     {
-        Log(LOG_SUCCESS, LOG_SUCCESS_OFFSET_READY);
-
         create_status = MH_CreateHook((LPVOID)(module + offset), bypass, target);
         if (create_status != MH_OK) {
             Log(LOG_ERROR, std::format("[{}+0x{:x}] {}", module->name, offset, LOG_ERROR_HOOK_CREATE_FAILED).c_str());
@@ -56,7 +54,8 @@ bool BuildHook(Module* module, int offset, LPVOID bypass, LPVOID* target)
         return true;
     }
 
-    Log(LOG_ERROR, LOG_ERROR_OFFSET_NOT_READY);
+    Log(LOG_ERROR, std::format("[{}+0x{:x}] {}", module->name, offset, LOG_ERROR_OFFSET_NOT_READY).c_str());
+
     return false;
 }
 
@@ -66,19 +65,23 @@ bool RemoveHook(Module* module, int offset)
     MH_STATUS remove_status = MH_UNKNOWN;
     MH_STATUS disable_status = MH_UNKNOWN;
 
-    Log(LOG_SUCCESS, LOG_SUCCESS_OFFSET_READY);
+    if (ValidateOffset(module->handle, offset) == true)
+    {
+        remove_status = MH_RemoveHook((LPVOID)(module + offset));
+        if (remove_status != MH_OK) {
+            Log(LOG_ERROR, std::format("[{}+0x{:x}] {}", module->name, offset, LOG_ERROR_HOOK_REMOVING_FAILED).c_str());
+            return false;
+        }
 
-    remove_status = MH_RemoveHook((LPVOID)(module + offset));
-    if (remove_status != MH_OK) {
-        Log(LOG_ERROR, std::format("[{}+0x{:x}] {}", module->name, offset, LOG_ERROR_HOOK_REMOVING_FAILED).c_str());
-        return false;
+        disable_status = MH_DisableHook((LPVOID)(module + offset));
+        if (disable_status != MH_OK) {
+            Log(LOG_ERROR, std::format("[{}+0x{:x}] {}", module->name, offset, LOG_ERROR_HOOK_DISABLING_FAILED).c_str());
+            return false;
+        }
+        return true;
     }
 
-    disable_status = MH_DisableHook((LPVOID)(module + offset));
-    if (disable_status != MH_OK) {
-        Log(LOG_ERROR, std::format("[{}+0x{:x}] {}", module->name, offset, LOG_ERROR_HOOK_DISABLING_FAILED).c_str());
-        return false;
-    }
+    Log(LOG_ERROR, std::format("[{}+0x{:x}] {}", module->name, offset, LOG_ERROR_OFFSET_NOT_READY).c_str());
 
-    return true;
+    return false;
 }

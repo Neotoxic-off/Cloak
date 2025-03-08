@@ -4,7 +4,6 @@
 
 #include "utils/logs.h"
 #include "utils/logger.h"
-#include "utils/modules.h"
 #include "utils/hooks.h"
 
 class Cheat
@@ -17,7 +16,7 @@ class Cheat
         bool ready;
 
     public:
-        Cheat(Module*, int, LPVOID, LPVOID*);
+        Cheat(Module* module, int offset, LPVOID bypass, LPVOID* target);
         ~Cheat();
 
         bool Hook();

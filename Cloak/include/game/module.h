@@ -2,6 +2,7 @@
 #pragma once
 
 #include <Windows.h>
+#include <Psapi.h>
 #include <iostream>
 #include <format>
 
@@ -11,6 +12,7 @@
 class Module
 {
     public:
+        MODULEINFO information;
         HMODULE handle;
         LPCWSTR pointer;
         const char* name;

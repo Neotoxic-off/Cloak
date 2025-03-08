@@ -18,28 +18,24 @@ Cheat::~Cheat()
 
 bool Cheat::Hook()
 {
-    Log(LOG_WAIT, LOG_WAIT_HOOKING_CHEAT);
-
     if (BuildHook(this->module, this->offset, this->bypass, this->target))
     {
-        Log(LOG_SUCCESS, LOG_SUCCESS_HOOKING_CHEAT);
+        Log(LOG_SUCCESS, std::format("[{}+{}] {}", this->module->name, this->offset, LOG_SUCCESS_HOOKING_CHEAT).c_str());
         return true;
     }
 
-    Log(LOG_ERROR, LOG_ERROR_HOOKING_CHEAT);
+    Log(LOG_ERROR, std::format("[{}+{}] {}", this->module->name, this->offset, LOG_ERROR_HOOKING_CHEAT).c_str());
     return false;
 }
 
 bool Cheat::UnHook()
 {
-    Log(LOG_WAIT, LOG_WAIT_UNHOOKING_CHEAT);
-
     if (RemoveHook(this->module, this->offset))
     {
-        Log(LOG_SUCCESS, LOG_SUCCESS_UNHOOKING_CHEAT);
+        Log(LOG_SUCCESS, std::format("[{}+{}] {}", this->module->name, this->offset, LOG_SUCCESS_UNHOOKING_CHEAT).c_str());
         return true;
     }
 
-    Log(LOG_ERROR, LOG_ERROR_UNHOOKING_CHEAT);
+    Log(LOG_ERROR, std::format("[{}+{}] {}", this->module->name, this->offset, LOG_ERROR_UNHOOKING_CHEAT).c_str());
     return false;
 }

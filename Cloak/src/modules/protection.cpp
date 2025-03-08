@@ -121,4 +121,3 @@ void Protection::NeutralizeExceptionHandlers()
 {
     SetUnhandledExceptionFilter(NULL);
 }
-

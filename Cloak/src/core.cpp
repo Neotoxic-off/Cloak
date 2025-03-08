@@ -17,10 +17,10 @@ Core::~Core()
 
 void Core::Run()
 {
-    this->factory.Initialize();
+    this->sample.Run();
 
     std::map<int, std::function<void()>> keyActions = {
-        {KEY_REHOOK_CHEAT_MODULES, [this]() { this->factory.ReHookCheats(); }},
+        {KEY_REHOOK_CHEAT_MODULES, [this]() { this->sample.ReHookCheats(); }},
         {KEY_UNLOAD, [this]() { UnLoad(); }}
     };
 
@@ -54,7 +54,7 @@ void Core::ApplyProtection()
 void Core::UnLoad()
 {
     this->running = false;
-    this->factory.UnHookCheats();
+    this->sample.UnHookCheats();
 
     Log(LOG_INFO, "Cloak unloaded");
 }

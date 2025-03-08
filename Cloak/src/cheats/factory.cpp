@@ -5,6 +5,7 @@
 
 Factory::Factory()
 {
+    this->cheats = std::vector<Cheat>();
 }
 
 Factory::~Factory()
@@ -28,7 +29,7 @@ void Factory::HookCheats()
 
     uint16_t failed = 0;
 
-    for (std::vector<Cheat>::iterator it = this->Cheats.begin(); it != this->Cheats.end(); ++it)
+    for (std::vector<Cheat>::iterator it = this->cheats.begin(); it != this->cheats.end(); ++it)
     {
         if (!it->Hook()) {
             failed++;
@@ -50,7 +51,7 @@ void Factory::UnHookCheats()
 
     uint16_t failed = 0;
 
-    for (std::vector<Cheat>::iterator it = this->Cheats.begin(); it != this->Cheats.end(); ++it)
+    for (std::vector<Cheat>::iterator it = this->cheats.begin(); it != this->cheats.end(); ++it)
     {
         if (!it->UnHook()) {
             failed++;
