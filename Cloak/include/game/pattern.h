@@ -20,5 +20,5 @@ class Pattern
         Pattern();
         ~Pattern();
 
-        uintptr_t Search(Module* module, const char* pattern);
+        uintptr_t Scan(Module* module, const char* pattern);
 };

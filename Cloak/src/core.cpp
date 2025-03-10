@@ -21,6 +21,7 @@ void Core::Run()
 
     std::map<int, std::function<void()>> keyActions = {
         {KEY_REHOOK_CHEAT_MODULES, [this]() { this->sample.ReHookCheats(); }},
+        {KEY_SCAN_PATTERNS, [this]() { this->sample.ScanPatterns(); }},
         {KEY_UNLOAD, [this]() { UnLoad(); }}
     };
 

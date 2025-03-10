@@ -82,7 +82,7 @@ uintptr_t Pattern::Find(uintptr_t moduleBase, size_t moduleSize, const std::stri
     return 0;
 }
 
-uintptr_t Pattern::Search(Module* module, const char* pattern)
+uintptr_t Pattern::Scan(Module* module, const char* pattern)
 {
     uintptr_t offset = 0;
     uintptr_t address = 0;

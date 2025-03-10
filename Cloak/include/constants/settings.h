@@ -23,10 +23,11 @@ static const int WAIT_PROCESS_LOADING_TIME = 2000;
 static const int WAIT_KEY_INPUT_TIME = 100;
 
 static const int KEY_REHOOK_CHEAT_MODULES = VK_F1;
+static const int KEY_SCAN_PATTERNS = VK_F2;
 static const int KEY_UNLOAD = VK_F4;
 
 static const std::map<int, std::string> KEYS_MENU = {
     {KEY_REHOOK_CHEAT_MODULES, "Rehook cheat modules"},
-
+    {KEY_SCAN_PATTERNS, "Scan patterns"},
     {KEY_UNLOAD, "Unloads dll"}
 };

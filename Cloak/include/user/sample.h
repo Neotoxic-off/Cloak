@@ -26,5 +26,5 @@ class Sample
         void ReHookCheats();
         void HookCheats();
         void UnHookCheats();
-        void SearchPattern();
+        void ScanPatterns();
 };

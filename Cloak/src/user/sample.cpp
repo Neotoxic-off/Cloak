@@ -23,7 +23,6 @@ void Sample::Run()
     };
 
     this->factory.Initialize();
-    this->SearchPattern();
 }
 
 void Sample::ReHookCheats()
@@ -41,7 +40,15 @@ void Sample::UnHookCheats()
     this->UnHookCheats();
 }
 
-void Sample::SearchPattern()
+void Sample::ScanPatterns()
 {
-    this->pattern.Search(MODULE_GAME_ASSEMBLY, PATTERN_EXAMPLE);
+    uintptr_t offset = 0;
+    std::vector<const char*> patterns = {
+        PATTERN_EXAMPLE_1,
+        PATTERN_EXAMPLE_2
+    };
+
+    for (const char* pattern : patterns) {
+        this->pattern.Scan(MODULE_GAME_ASSEMBLY, pattern);
+    }
 }
