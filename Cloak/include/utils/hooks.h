@@ -8,7 +8,7 @@
 
 #include "logger.h"
 
-#include "utils/logs.h"
+#include "constants/logs.h"
 #include "game/module.h"
 
 bool BuildHook(Module* module, int offset, LPVOID, LPVOID*);

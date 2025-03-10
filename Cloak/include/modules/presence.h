@@ -4,7 +4,7 @@
 #include <tlhelp32.h>
 
 #include "utils/logger.h"
-#include "utils/logs.h"
+#include "constants/logs.h"
 
 class Presence
 {

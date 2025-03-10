@@ -31,7 +31,8 @@ void Factory::HookCheats()
 
     for (std::vector<Cheat>::iterator it = this->cheats.begin(); it != this->cheats.end(); ++it)
     {
-        if (!it->Hook()) {
+        if (!it->Hook())
+        {
             failed++;
         }
     }
@@ -53,7 +54,8 @@ void Factory::UnHookCheats()
 
     for (std::vector<Cheat>::iterator it = this->cheats.begin(); it != this->cheats.end(); ++it)
     {
-        if (!it->UnHook()) {
+        if (!it->UnHook())
+        {
             failed++;
         }
     }

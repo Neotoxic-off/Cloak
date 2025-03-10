@@ -23,6 +23,7 @@ void Sample::Run()
     };
 
     this->factory.Initialize();
+    this->SearchPattern();
 }
 
 void Sample::ReHookCheats()
@@ -37,5 +38,10 @@ void Sample::HookCheats()
 
 void Sample::UnHookCheats()
 {
-    this->ReHookCheats();
+    this->UnHookCheats();
+}
+
+void Sample::SearchPattern()
+{
+    this->pattern.Search(MODULE_GAME_ASSEMBLY, PATTERN_EXAMPLE);
 }

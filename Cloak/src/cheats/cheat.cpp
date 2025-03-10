@@ -20,11 +20,11 @@ bool Cheat::Hook()
 {
     if (BuildHook(this->module, this->offset, this->bypass, this->target))
     {
-        Log(LOG_SUCCESS, std::format("[{}+{}] {}", this->module->name, this->offset, LOG_SUCCESS_HOOKING_CHEAT).c_str());
+        Log(LOG_SUCCESS, std::format("[{}+0x{:x}] {}", this->module->name, this->offset, LOG_SUCCESS_HOOKING_CHEAT).c_str());
         return true;
     }
 
-    Log(LOG_ERROR, std::format("[{}+{}] {}", this->module->name, this->offset, LOG_ERROR_HOOKING_CHEAT).c_str());
+    Log(LOG_ERROR, std::format("[{}+0x{:x}] {}", this->module->name, this->offset, LOG_ERROR_HOOKING_CHEAT).c_str());
     return false;
 }
 
@@ -32,10 +32,10 @@ bool Cheat::UnHook()
 {
     if (RemoveHook(this->module, this->offset))
     {
-        Log(LOG_SUCCESS, std::format("[{}+{}] {}", this->module->name, this->offset, LOG_SUCCESS_UNHOOKING_CHEAT).c_str());
+        Log(LOG_SUCCESS, std::format("[{}+0x{:x}] {}", this->module->name, this->offset, LOG_SUCCESS_UNHOOKING_CHEAT).c_str());
         return true;
     }
 
-    Log(LOG_ERROR, std::format("[{}+{}] {}", this->module->name, this->offset, LOG_ERROR_UNHOOKING_CHEAT).c_str());
+    Log(LOG_ERROR, std::format("[{}+0x{:x}] {}", this->module->name, this->offset, LOG_ERROR_UNHOOKING_CHEAT).c_str());
     return false;
 }

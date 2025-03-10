@@ -6,7 +6,7 @@
 #include <intrin.h>
 
 #include "utils/logger.h"
-#include "utils/logs.h"
+#include "constants/logs.h"
 #include "utils/hooks.h"
 
 #define NTDLL "ntdll.dll"

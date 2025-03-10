@@ -18,7 +18,7 @@
 #include "user/sample.h"
 
 #include "utils/logger.h"
-#include "utils/settings.h"
+#include "constants/settings.h"
 
 #if _WIN64 
     #pragma comment(lib, "libMinHook.x64.lib")
