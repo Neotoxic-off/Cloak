@@ -1,0 +1,48 @@
+\doxysection{protection.\+h}
+\hypertarget{protection_8h_source}{}\label{protection_8h_source}\index{Cloak/include/modules/protection.h@{Cloak/include/modules/protection.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <windows.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <tlhelp32.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <winternl.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <intrin.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}utils/logger.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}constants/logs.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}utils/hooks.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ NTDLL\ "{}ntdll.dll"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{typedef}\ NTSTATUS(NTAPI*\ pNtSetInformationProcess)}
+\DoxyCodeLine{00015\ (}
+\DoxyCodeLine{00016\ \ \ \ \ HANDLE\ ProcessHandle,}
+\DoxyCodeLine{00017\ \ \ \ \ UINT\ ProcessInformationClass,}
+\DoxyCodeLine{00018\ \ \ \ \ PVOID\ ProcessInformation,}
+\DoxyCodeLine{00019\ \ \ \ \ ULONG\ ProcessInformationLength}
+\DoxyCodeLine{00020\ \ \ \ \ );}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{typedef}\ NTSTATUS(NTAPI*\ pNtDelayExecution)(BOOL\ Alertable,\ PLARGE\_INTEGER\ DelayInterval);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ ProcessDebugFlags\ 0x1F}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ ProcessDebugObjectHandle\ 0x1E}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classProtection}{Protection}}}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ ClearPebFlags(PVOID);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ pNtSetInformationProcess\ GetNtSetInformationProcess();}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DisableDebuggerDetection();}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ BypassBreakpoints();}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ BypassTimingChecks();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ NeutralizeExceptionHandlers();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classProtection}{Protection}}();}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classProtection}{\string~Protection}}();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Apply();}
+\DoxyCodeLine{00042\ \};}
+
+\end{DoxyCode}

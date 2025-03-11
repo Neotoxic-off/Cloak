@@ -1,0 +1,30 @@
+\doxysection{pattern.\+h}
+\hypertarget{pattern_8h_source}{}\label{pattern_8h_source}\index{Cloak/include/game/pattern.h@{Cloak/include/game/pattern.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <Windows.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}utils/logger.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}utils/tools.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}constants/logs.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}game/module.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPattern}{Pattern}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ std::vector<std::pair<BYTE,\ bool>>\ Prepare(\textcolor{keyword}{const}\ std::string\&\ pattern);}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ uintptr\_t\ Find(uintptr\_t\ moduleBase,\ \textcolor{keywordtype}{size\_t}\ moduleSize,\ \textcolor{keyword}{const}\ std::string\&\ pattern);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPattern}{Pattern}}();}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPattern}{\string~Pattern}}();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ uintptr\_t\ Scan(\mbox{\hyperlink{classModule}{Module}}*\ module,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ pattern);}
+\DoxyCodeLine{00024\ \};}
+
+\end{DoxyCode}

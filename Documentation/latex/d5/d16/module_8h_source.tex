@@ -1,0 +1,35 @@
+\doxysection{module.\+h}
+\hypertarget{module_8h_source}{}\label{module_8h_source}\index{Cloak/include/game/module.h@{Cloak/include/game/module.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Windows.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <Psapi.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <format>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}utils/logger.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}constants/logs.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classModule}{Module}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ GetInformation();}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ MODULEINFO\ information;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ HMODULE\ handle;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ LPCWSTR\ pointer;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ uintptr\_t\ base;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ loaded;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classModule}{Module}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*,\ LPCWSTR);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classModule}{\string~Module}}();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Initialize();}
+\DoxyCodeLine{00029\ \};}
+
+\end{DoxyCode}

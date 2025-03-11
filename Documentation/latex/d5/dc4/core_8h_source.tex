@@ -1,0 +1,56 @@
+\doxysection{core.\+h}
+\hypertarget{core_8h_source}{}\label{core_8h_source}\index{Cloak/include/core.h@{Cloak/include/core.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}pch.h"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <format>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <windows.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <tlhelp32.h>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}minhook.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}modules/protection.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}modules/presence.h"{}}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}user/sample.h"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}utils/logger.h"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}constants/settings.h"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#if\ \_WIN64\ }}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\ \ \ \ \#pragma\ comment(lib,\ "{}libMinHook.x64.lib"{})}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\ \ \ \ \#pragma\ comment(lib,\ "{}libMinHook.x86.lib"{})}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCore}{Core}}}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ running;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLogger}{Logger}}\ logger;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPresence}{Presence}}\ presence;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classProtection}{Protection}}\ protection;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSample}{Sample}}\ sample;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCore}{Core}}();}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCore}{\string~Core}}();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ PatchPresence();}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ ApplyProtection();}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ WaitProcess();}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Run();}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ UnLoad();}
+\DoxyCodeLine{00050\ \};}
+
+\end{DoxyCode}

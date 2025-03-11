@@ -1,0 +1,23 @@
+\doxysection{hooks.\+h}
+\hypertarget{hooks_8h_source}{}\label{hooks_8h_source}\index{Cloak/include/utils/hooks.h@{Cloak/include/utils/hooks.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Windows.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <minhook.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <format>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}logger.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}constants/logs.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}game/module.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keywordtype}{bool}\ BuildHook(\mbox{\hyperlink{classModule}{Module}}*\ module,\ \textcolor{keywordtype}{int}\ offset,\ LPVOID,\ LPVOID*);}
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{bool}\ IsValidMemory(uintptr\_t\ address);}
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{bool}\ ValidateOffset(HMODULE\ module,\ \textcolor{keywordtype}{int}\ offset);}
+\DoxyCodeLine{00017\ \textcolor{keywordtype}{bool}\ RemoveHook(\mbox{\hyperlink{classModule}{Module}}*\ module,\ \textcolor{keywordtype}{int}\ offset);}
+
+\end{DoxyCode}

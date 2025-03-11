@@ -1,0 +1,39 @@
+\doxysection{logger.\+h}
+\hypertarget{logger_8h_source}{}\label{logger_8h_source}\index{Cloak/include/utils/logger.h@{Cloak/include/utils/logger.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <format>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <windows.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <tlhelp32.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <source\_location>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}constants/settings.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ LOG\_WAIT\ "{}WAIT"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ LOG\_SUCCESS\ "{}DONE"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ LOG\_ERROR\ "{}ERRO"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ LOG\_INFO\ "{}INFO"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ Log(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classLogger}{Logger}}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Load();}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Unload();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DisplayHeader();}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DisplayKeysMenu();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLogger}{Logger}}();}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLogger}{\string~Logger}}();}
+\DoxyCodeLine{00033\ \};}
+
+\end{DoxyCode}
