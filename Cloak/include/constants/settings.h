@@ -8,13 +8,17 @@
 #define VERSION "0.3.0"
 #define HEADER R"(
 
-
-O       o O       o O       o O       o O       o O       o
-| O   o | | O   o | | O   o | | O   o | | O   o | | O   o |
-| | O | | | | O | | | | O | | | | O | | | | O | | | | O | |
-| o   O | | o   O | | o   O | | o   O | | o   O | | o   O |
-o       O o       O o       O o       O o       O o       O
-
+             .,ad88888ba,.
+         .,ad8888888888888a,
+        d8P"""98888P"""98888b,
+        9b    d8888,    `9888B
+      ,d88aaa8888888b,,,d888P'
+     d8888888888888888888888b
+    d888888P""98888888888888P
+    88888P'    9888888888888
+    `98P'       9888888888P'
+                 `"9888P"'
+                    `"'
 
 )"
 
