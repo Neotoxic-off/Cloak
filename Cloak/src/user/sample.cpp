@@ -27,17 +27,17 @@ void Sample::Run()
 
 void Sample::ReHookCheats()
 {
-    this->ReHookCheats();
+    this->factory.ReHookCheats();
 }
 
 void Sample::HookCheats()
 {
-    this->HookCheats();
+    this->factory.HookCheats();
 }
 
 void Sample::UnHookCheats()
 {
-    this->UnHookCheats();
+    this->factory.UnHookCheats();
 }
 
 void Sample::ScanPatterns()
