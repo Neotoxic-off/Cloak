@@ -15,6 +15,28 @@
 - Auto pattern scanning
 - Keys interactions
 
+## Usage
+- Edit the offsets in `include/constants/offsets.h`
+- Edit the modules in `include/constants/modules.h`
+- Go in `src/user/sample.cpp`
+- Set you **game module** the **offset** and the **method** (can be edited / created / deleted)
+```CPP
+void Sample::Run()
+{
+    this->factory.cheats = {
+        Cheat(MODULE_GAME_ASSEMBLY, OFFSET_SAMPLE_1, DummyZero, nullptr),
+        Cheat(MODULE_GAME_ASSEMBLY, OFFSET_SAMPLE_2, DummyZero, nullptr),
+        Cheat(MODULE_GAME_ASSEMBLY, OFFSET_SAMPLE_3, DummyZero, nullptr),
+        Cheat(MODULE_GAME_ASSEMBLY, OFFSET_SAMPLE_4, DummyZero, nullptr),
+        Cheat(MODULE_GAME_ASSEMBLY, OFFSET_SAMPLE_5, DummyZero, nullptr)
+    };
+
+    this->factory.Initialize();
+}
+```
+- Compile the project for x64
+- Inject `Cloak.dll`
+
 ## Demo
 <image src="Assets/demo.gif"/>
 
