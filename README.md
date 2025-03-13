@@ -7,6 +7,14 @@
 - Cloak doesn't provide any offset
 - Cloak must be rebuild for your own usage and edit the files
 
+## Features
+- Auto hooking
+- Auto unhook
+- Auto rehook
+- Auto module management
+- Auto pattern scanning
+- Keys interactions
+
 ## Demo
 <image src="Assets/demo.gif"/>
 
